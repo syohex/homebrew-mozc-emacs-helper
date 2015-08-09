@@ -11,7 +11,7 @@ class MozcEmacsHelper < Formula
     system "./depot_tools/gclient config https://github.com/google/mozc.git --name=. --deps-file=src/DEPS"
     system "./depot_tools/gclient sync"
     system "patch src/build_mozc.py < build_mozc.py.patch"
-    system "cd src && env GYP_DEFINES="mac_sdk=10.7 mac_deployment_target=10.7" python build_mozc.py gyp --noqt"
+    system "cd src && env GYP_DEFINES='mac_sdk=10.10 mac_deployment_target=10.10' python build_mozc.py gyp --noqt"
     system "cd src && python build_mozc.py build -c Release mac/mac.gyp:GoogleJapaneseInput mac/mac.gyp:gen_launchd_confs unix/emacs/emacs.gyp:mozc_emacs_helper"
 
     bin.install 'src/out_mac/Release/mozc_emacs_helper'
