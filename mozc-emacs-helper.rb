@@ -6,8 +6,8 @@ class MozcEmacsHelper < Formula
   version "0.0.1"
 
   def install
-    system "svn co http://src.chromium.org/svn/trunk/tools/depot_tools"
-    system "./depot_tools/gclient config http://mozc.googlecode.com/svn/trunk/src"
+    system "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git"
+    system "./depot_tools/gclient config https://github.com/google/mozc.git"
     system "./depot_tools/gclient sync"
     system "patch src/build_mozc.py < build_mozc.py.patch"
     system "python src/build_mozc.py gyp --noqt"
