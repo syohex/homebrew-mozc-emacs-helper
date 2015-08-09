@@ -9,7 +9,7 @@ class MozcEmacsHelper < Formula
     system "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git"
     system "./depot_tools/gclient config https://github.com/google/mozc.git"
     system "./depot_tools/gclient sync"
-    system "cd mozc && patch src/build_mozc.py < build_mozc.py.patch"
+    system "cd mozc && patch src/build_mozc.py < ../build_mozc.py.patch"
     system "cd mozc && python src/build_mozc.py gyp --noqt"
     system "cd mozc && python src/build_mozc.py build -c Release src/mac/mac.gyp:GoogleJapaneseInput src/mac/mac.gyp:gen_launchd_confs src/unix/emacs/emacs.gyp:mozc_emacs_helper"
 
