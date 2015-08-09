@@ -6,6 +6,7 @@ class MozcEmacsHelper < Formula
   version "0.0.1"
 
   def install
+    system "rm -rf .git"
     system "git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git"
     system "./depot_tools/gclient config https://github.com/google/mozc.git --name=. --deps-file=src/DEPS"
     system "./depot_tools/gclient sync"
